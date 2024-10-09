@@ -2,6 +2,15 @@
 import { useState, useEffect, ReactNode } from 'react'
 import { Book, Cpu, FileCode, Layout, List, Terminal, Users, AlertTriangle, ChevronDown, ChevronUp, Menu } from 'lucide-react'
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { Button } from '@/components/ui/button'
+
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState('overview')
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -142,8 +151,30 @@ export default function Home() {
           <p>&copy; 2024 COAL Car Booking System Project - University Assembly Language Course</p>
           <p className="mt-2">Development in Progress by Eshal, Saim, & Sahil</p>
           <div className="mt-4 flex justify-center space-x-4">
-            <a href="https://github.com/saim-x" className="hover:text-blue-400 transition-colors">GitHub</a>
-            <a href="mailto:k230708@nu.edu.pk" className="hover:text-blue-400 transition-colors">Contact</a>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="link" className="text-white hover:text-blue-400 transition-colors cursor-not-allowed">
+                    GitHub
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent className="bg-gray-900 text-white text-sm rounded-md py-2 px-3 shadow-lg">
+                  <p>Repository coming soon</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="link" className="text-white hover:text-blue-400 transition-colors">
+                    Contact
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent className="bg-gray-900 text-white text-sm rounded-md py-2 px-3 shadow-lg">
+                  <p>k230708@nu.edu.pk</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
       </footer>
