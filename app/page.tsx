@@ -140,7 +140,7 @@ export default function Home() {
       <footer className="bg-gray-800 text-white py-6 md:py-8 mt-12 md:mt-16 relative z-10">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; 2024 COAL Car Booking System Project - University Assembly Language Course</p>
-          <p className="mt-2">Development in Progress by Eshal, Saim, & Sahil.</p>
+          <p className="mt-2">Development in Progress by Eshal, Saim, & Sahil</p>
           <div className="mt-4 flex justify-center space-x-4">
             <a href="https://github.com/saim-x" className="hover:text-blue-400 transition-colors">GitHub</a>
             <a href="mailto:k230708@nu.edu.pk" className="hover:text-blue-400 transition-colors">Contact</a>
