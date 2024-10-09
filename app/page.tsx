@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, ReactNode } from 'react'
-import { Book, Cpu, FileCode, Layout, List, Terminal, Users, AlertTriangle, ChevronDown, ChevronUp, Menu } from 'lucide-react'
+import { Book, Cpu, FileCode, Layout, List, Terminal, Users, AlertTriangle, ChevronDown, ChevronUp, Menu, Code, Coffee, Lightbulb, Github, Linkedin, Mail } from 'lucide-react'
+import Image from 'next/image'
 
 import {
   Tooltip,
@@ -50,6 +51,7 @@ export default function Home() {
             <NavButton active={activeSection === 'methodology'} onClick={() => setActiveSection('methodology')}>Methodology</NavButton>
             <NavButton active={activeSection === 'features'} onClick={() => setActiveSection('features')}>Features</NavButton>
             <NavButton active={activeSection === 'challenges'} onClick={() => setActiveSection('challenges')}>Challenges</NavButton>
+            <NavButton active={activeSection === 'developers'} onClick={() => setActiveSection('developers')}>Developers</NavButton>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-900">
@@ -142,6 +144,38 @@ export default function Home() {
             <ChallengeItem title="Error Handling">
               Developing robust error checking and handling mechanisms in a low-level programming environment.
             </ChallengeItem>
+          </div>
+        </Section>
+
+        <Section title="Project Developers" active={activeSection === 'developers'}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            <DeveloperCard
+              name="Eshal"
+              role="Lead Programmer"
+              image="/eshal.svg"
+              skills={['Assembly', 'Algorithms']}
+              github="#"
+              linkedin="https://www.linkedin.com/in/eshal-imran-a954252a2/"
+              email="k230075@nu.edu.pk"
+            />
+            <DeveloperCard
+              name="Saim"
+              role="Lead Programmer"
+              image="/saim.jpg"
+              skills={['Low-level Programming', 'Memory Management', 'Optimization']}
+              github="https://github.com/saim"
+              linkedin="https://linkedin.com/in/contactsaim/"
+              email="k230708@nu.edu.pk"
+            />
+            <DeveloperCard
+              name="Sahil"
+              role="Lead Programmer"
+              image="/sahil.jpg"
+              skills={['Assembly', 'Data Structures', 'UI/UX Design']}
+              github="https://github.com/sahillatif0"
+              linkedin="https://www.linkedin.com/in/sahil-latif/"
+              email="i2307638@nu.edu.pk"
+            />
           </div>
         </Section>
       </main>
@@ -293,6 +327,52 @@ function HighlightCard({ title, value, description }: HighlightCardProps) {
       <h3 className="text-lg md:text-xl font-semibold mb-2">{title}</h3>
       <p className="text-2xl md:text-3xl font-bold text-blue-600 mb-2">{value}</p>
       <p className="text-sm md:text-base text-gray-600">{description}</p>
+    </div>
+  )
+}
+
+interface DeveloperCardProps {
+  name: string;
+  role: string;
+  image: string;
+  skills: string[];
+  github: string;
+  linkedin: string;
+  email: string;
+}
+
+function DeveloperCard({ name, role, image, skills, github, linkedin, email }: DeveloperCardProps) {
+  return (
+    <div className="bg-white bg-opacity-90 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+      <div className="relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-3 sm:mb-4">
+        <Image
+          src={image}
+          alt={name}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-full"
+        />
+      </div>
+      <h3 className="text-xl sm:text-2xl font-bold text-center mb-1 sm:mb-2">{name}</h3>
+      <p className="text-blue-600 text-sm sm:text-base text-center mb-3 sm:mb-4">{role}</p>
+      <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-3 sm:mb-4">
+        {skills.map((skill, index) => (
+          <span key={index} className="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">
+            {skill}
+          </span>
+        ))}
+      </div>
+      <div className="flex justify-center space-x-3 sm:space-x-4">
+        <a href={github} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500">
+          <Github className="w-5 h-5 sm:w-6 sm:h-6" />
+        </a>
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500">
+          <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
+        </a>
+        <a href={`mailto:${email}`} className="text-gray-600 hover:text-blue-500">
+          <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
+        </a>
+      </div>
     </div>
   )
 }
